@@ -12,7 +12,7 @@
       --bg: #0a0c10;
       --card-bg: #11141b;
       --border: rgba(255, 255, 255, 0.08);
-      --accent: #c1ff3d; /* Professional Lime */
+      --accent: #c1ff3d;
       --accent-soft: rgba(193, 255, 61, 0.1);
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
@@ -26,355 +26,84 @@
       color: var(--text-main); 
       font-family: 'Inter', sans-serif; 
       line-height: 1.7; 
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- Navigation --- */
     header {
       position: fixed; top: 0; width: 100%; z-index: 1000;
       background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-container {
       max-width: 1200px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 2rem;
     }
-    .logo { font-weight: 800; font-size: 1.25rem; color: var(--accent); letter-spacing: -1px; }
+
+    .logo { font-weight: 800; font-size: 1.25rem; color: var(--accent); }
     nav ul { display: flex; gap: 2rem; list-style: none; }
-    nav a { 
-      text-decoration: none; color: var(--text-muted); 
-      font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-      transition: color 0.3s;
-    }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
     nav a:hover { color: var(--accent); }
 
-    /* --- Layout Helpers --- */
-    .section { padding: 80px 10% 80px 10%; max-width: 1400px; margin: 0 auto; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .badge { 
-      display: inline-block; padding: 4px 12px; background: var(--accent-soft); 
-      color: var(--accent); border-radius: 20px; font-size: 0.75rem; font-weight: 700;
-      margin-bottom: 1rem; border: 1px solid rgba(193, 255, 61, 0.2);
-    }
-    h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; color: #fff; }
-    h2 span { color: var(--accent); }
+    .section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
+    .badge { display: inline-block; padding: 4px 12px; background: var(--accent-soft); color: var(--accent); border-radius: 20px; font-size: 0.75rem; margin-bottom: 1rem; }
 
-    /* --- Hero --- */
-    #hero { 
-      height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-      background: radial-gradient(circle at 80% 20%, #151921 0%, #0a0c10 100%);
-    }
-    .hero-content h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
-    .hero-content p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
-    .cta-btn { 
-      padding: 1rem 2rem; background: var(--accent); color: #000; 
-      text-decoration: none; font-weight: 700; border-radius: 4px; transition: transform 0.2s;
-    }
-    .cta-btn:hover { transform: translateY(-3px); }
+    #hero { height: 100vh; display: flex; justify-content: center; flex-direction: column; }
+    .hero-content h1 { font-size: 4.5rem; margin-bottom: 1.5rem; }
+    .hero-content p { max-width: 600px; color: var(--text-muted); margin-bottom: 2rem; }
 
-    /* --- About --- */
-    .about-card { 
-      background: var(--card-bg); padding: 2.5rem; border: 1px solid var(--border); 
-      border-radius: 12px; position: relative;
-    }
-    .rec-letter-box {
-      margin-top: 1.5rem; padding: 1rem; border-left: 3px solid var(--accent);
-      background: rgba(255,255,255,0.03); font-style: italic; font-size: 0.9rem;
-    }
-
-    /* --- Experience --- */
-    .timeline { border-left: 1px solid var(--border); padding-left: 2rem; position: relative; }
-    .exp-item { margin-bottom: 3.5rem; position: relative; }
-    .exp-item::before { 
-      content: ''; position: absolute; left: calc(-2rem - 5px); top: 8px; 
-      width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
-    }
-    .exp-date { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.5rem; }
-    .exp-title { font-size: 1.4rem; font-weight: 700; color: #fff; }
-    .exp-co { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
-    .exp-list { list-style: none; }
-    .exp-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-muted); }
-    .exp-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
-    .tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .tag { background: #1a1f29; padding: 4px 10px; font-size: 0.7rem; border-radius: 4px; color: #fff; border: 1px solid var(--border); }
-
-    /* --- Skills --- */
-    .skills-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .skill-cat h3 { font-size: 1rem; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-    .skill-list { list-style: none; }
-    .skill-list li { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.95rem; }
-
-    /* --- Responsive --- */
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-content h1 { font-size: 3rem; }
-      nav ul { display: none; }
-      .section { padding: 60px 5%; }
+    .cta-btn {
+      padding: 1rem 2rem;
+      background: var(--accent);
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      display: inline-block;
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="nav-container">
-      <div class="logo">RK<span>.</span></div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <a href="mailto:roshankashyap2002@gmail.com" class="cta-btn hire-btn" id="hireBtn">
-  <span class="btn-text">Hire Me</span>
-</a>
+<header>
+  <div class="nav-container">
+    <div class="logo">RK.</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="mailto:roshankashyap2002@gmail.com" class="cta-btn">Hire Me</a>
+  </div>
+</header>
 
-<style>
-  /* Fun Hover Animation for the Hire Button */
-  .hire-btn {
-    position: relative;
-    overflow: hidden;
-    min-width: 140px;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: var(--accent);
-    color: #000;
-  }
+<section id="hero" class="section">
+  <div class="hero-content">
+    <div class="badge">Open to Full-Time Roles | London, UK</div>
+    <h1>Roshan Kashyap<br>Full-Stack & Cloud Engineer</h1>
+    <p>I engineer production-ready systems, combining industry experience with an MSc in Computer Science.</p>
+    <div style="margin-top: 2rem;">
+      <a href="#experience" class="cta-btn">View Experience</a>
 
-  .hire-btn:hover {
-    background: #fff; /* Shifts to white on hover for a "premium" feel */
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(193, 255, 61, 0.4);
-  }
-
-  .hire-btn::after {
-    content: 'Get in Touch ⚡️'; /* The "Fun" text */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: top 0.3s;
-    background: #fff;
-    color: #000;
-    font-weight: 800;
-  }
-
-  .hire-btn:hover .btn-text {
-    opacity: 0;
-  }
-
-  .hire-btn:hover::after {
-    top: 0;
-  }
-</style>
+      <!-- ✅ UPDATED RESUME LINK -->
+      <a href="/Roshan_CV.pdf" target="_blank"
+         class="cta-btn"
+         style="background: transparent; color: #fff; border: 1px solid var(--border); margin-left: 1rem;">
+        View Resume
+      </a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <section id="hero" class="section">
-    <div class="hero-content">
-      <div class="badge">Open to Full-Time Roles | London, UK</div>
-      <h1>Roshan <span style="color: #fff;">Kashyap</span><br>Full-Stack & Cloud Engineer</h1>
-      <p>I engineer production-ready systems, combining 2+ years of industry experience with an MSc in Computer Science (Merit) from Queen Mary University of London.</p>
-      <div style="margin-top: 2rem;">
-        <a href="#experience" class="cta-btn">View Experience</a>
-        <a href="packages/res1.pdf" download class="cta-btn" style="background: transparent; color: #fff; border: 1px solid var(--border); margin-left: 1rem;">Download CV</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section">
-    <div class="grid">
-      <div>
-        <div class="badge">01. Philosophy</div>
-        <h2 style="font-size: 3rem; line-height: 1.1;">Engineering the <span>intelligence layer</span> between humans and machines.</h2>
-        
-        <div class="about-content" style="margin-top: 2rem; color: var(--text-muted); font-size: 1.1rem;">
-          <p style="color: var(--accent); font-family: 'JetBrains Mono'; margin-bottom: 1.5rem; border-left: 2px solid var(--accent); padding-left: 1.5rem;">
-            "AI won't replace humans—but humans with AI will replace humans without AI."
-          </p>
-          
-          <p style="margin-bottom: 1.5rem;">
-            Hey, I'm <strong>Roshan Kashyap</strong>. I live at the intersection where this quote becomes reality.
-          </p>
-
-          <p style="margin-bottom: 1.5rem;">
-            We're past the hype cycle. AI isn't coming—it's here, running in production, making decisions, and reshaping what "software engineering" means. To me, <strong>LLMs are infrastructure</strong>. Vector databases are the new normal. RAG isn't just a buzzword; it's how modern systems remember and reason.
-          </p>
-
-          <p>
-            My work focuses on bridging the gap between raw data and actionable intelligence. Whether I’m architecting <strong>microservices at Wissen Infotech</strong> or mentoring the next generation of engineers at <strong>Queen Mary University</strong>, I build with the belief that the best software doesn't just calculate—it understands.
-          </p>
-        </div>
-      </div>
-
-      <div class="about-card">
-        <h3 style="margin-bottom: 1.5rem; color: #fff;">The Intelligence Profile</h3>
-        
-        <div style="margin-bottom: 2rem;">
-          <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">Current Focus</p>
-          <p>MSc Computer Science (Merit) — Queen Mary University of London</p>
-        </div>
-
-        <div style="margin-bottom: 2rem;">
-          <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">Academic Leadership</p>
-          <p>Teaching Demonstrator: AI, Cloud AWS, Python, Java, and Data Structures.</p>
-        </div>
-
-        <div class="rec-letter-box" style="background: rgba(193, 255, 61, 0.05);">
-          <strong style="color: var(--accent); display: block; margin-bottom: 0.5rem;">Professor's Recommendation</strong>
-          Recognized by QMUL faculty for high-level technical aptitude in Distributed Systems and Artificial Intelligence. Letter available for verified opportunities.
-        </div>
-        
-        <div style="margin-top: 2rem; padding: 1rem; border: 1px solid var(--border); border-radius: 8px;">
-          <p style="font-size: 0.75rem; color: var(--text-muted);">
-            <strong>Specialization:</strong> Full-Stack Cloud-Native AI Systems.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="section">
-    <div class="badge">02. Career</div>
-    <h2>Professional <span>Experience.</span></h2>
-    <div class="timeline">
-      
-      <div class="exp-item">
-        <div class="exp-date">Sept 2024 — Present</div>
-        <div class="exp-title">Teaching Demonstrator</div>
-        <div class="exp-co">Queen Mary University of London | London, UK</div>
-        <ul class="exp-list">
-          <li><strong>Subjects Taught:</strong> Artificial Intelligence, Cloud Computing (AWS), Python Programming, Java (OOP), and Algorithms & Data Structures.</li>
-          <li>Directly mentoring 60+ undergraduate students, providing advanced code reviews and technical troubleshooting for complex software projects.</li>
-          <li>Connecting academic concepts to real-world software engineering practices to prepare students for technical interviews and industry roles.</li>
-        </ul>
-        <div class="tag-container">
-          <span class="tag">AI</span><span class="tag">AWS Cloud</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">Data Structures</span>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Sept 2023 — Aug 2024</div>
-        <div class="exp-title">Full-Stack Developer</div>
-        <div class="exp-co">Wissen Infotech | Bangalore, India</div>
-        <ul class="exp-list">
-          <li>Developed and deployed production-grade microservices using <strong>React 18</strong> and <strong>Node.js</strong>, serving enterprise-level traffic.</li>
-          <li>Optimized <strong>PostgreSQL</strong> databases using Drizzle ORM, significantly reducing query latency for fintech dashboards.</li>
-          <li>Automated infrastructure deployments using <strong>Terraform</strong> on AWS (ECS/EC2), moving the team toward a 100% CI/CD workflow.</li>
-        </ul>
-        <div class="tag-container">
-          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">AWS</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="education" class="section" style="background: #0d1117;">
-    <div class="badge">03. Academic Rigor</div>
-    <h2>Education & <span>Modules.</span></h2>
-    <div class="grid">
-      <div class="about-card" style="background: var(--bg);">
-        <div class="badge" style="background: gold; color: #000;">Classification: Merit</div>
-        <h3>MSc Computer Science</h3>
-        <p style="color: var(--accent); font-family: 'JetBrains Mono';">Queen Mary University of London (2025)</p>
-        <div class="tag-container" style="margin-top: 1.5rem;">
-          <span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span><span class="tag">Cloud Computing</span><span class="tag">Distributed Systems</span><span class="tag">Big Data</span><span class="tag">Advanced Algorithms</span>
-        </div>
-      </div>
-      <div class="about-card" style="background: var(--bg);">
-        <div class="badge">First Class Honours</div>
-        <h3>BEng Computer Science</h3>
-        <p style="color: var(--accent); font-family: 'JetBrains Mono';">JIT, Bangalore (2024)</p>
-        <div class="tag-container" style="margin-top: 1.5rem;">
-          <span class="tag">Full-Stack Web Dev</span><span class="tag">Cloud Fundamentals</span><span class="tag">Machine Learning</span><span class="tag">Operating Systems</span><span class="tag">Database Management</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section">
-    <div class="badge">04. Technical Toolbox</div>
-    <h2>Core <span>Competencies.</span></h2>
-    <div class="skills-wrapper">
-      
-      <div class="skill-cat">
-        <h3>Front-End</h3>
-        <ul class="skill-list">
-          <li>React / Next.js</li>
-          <li>TypeScript</li>
-          <li>Tailwind CSS / HTML5</li>
-          <li>JavaScript (ES6+)</li>
-        </ul>
-      </div>
-
-      <div class="skill-cat">
-        <h3>Back-End</h3>
-        <ul class="skill-list">
-          <li>Node.js / Express</li>
-          <li>Python / Flask / FastAPI</li>
-          <li>Java (OOP)</li>
-          <li>REST & GraphQL APIs</li>
-        </ul>
-      </div>
-
-      <div class="skill-cat">
-        <h3>Database</h3>
-        <ul class="skill-list">
-          <li>PostgreSQL</li>
-          <li>MySQL</li>
-          <li>MongoDB</li>
-          <li>DynamoDB / Snowflake</li>
-        </ul>
-      </div>
-
-      <div class="skill-cat">
-        <h3>Cloud & DevOps</h3>
-        <ul class="skill-list">
-          <li>AWS (EC2, S3, RDS, ECS)</li>
-          <li>Terraform (IaC)</li>
-          <li>Docker & Kubernetes</li>
-          <li>CI/CD (GitHub Actions)</li>
-        </ul>
-      </div>
-
-      <div class="skill-cat">
-        <h3>Machine Learning</h3>
-        <ul class="skill-list">
-          <li>TensorFlow / PyTorch</li>
-          <li>Scikit-learn / Pandas</li>
-          <li>Deep Learning (CNN)</li>
-          <li>RAG Systems / LangChain</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="about-card" style="text-align: center; padding: 4rem 2rem;">
-      <div class="badge">Available for full-time</div>
-      <h2>Let's build the <span>Future.</span></h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem auto;">I am ready to bring my hybrid experience of teaching and engineering to your technical team.</p>
-      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-        <a href="mailto:roshankashyap2002@gmail.com" class="cta-btn">Email Me</a>
-        <a href="https://linkedin.com/in/roshankashyap" target="_blank" class="cta-btn" style="background: #0077b5; color: #fff;">LinkedIn</a>
-      </div>
-      <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.8rem;">References and Recommendation Letter available upon request.</p>
-    </div>
-  </section>
-
-  <footer style="text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted);">
-    © 2026 Roshan Kashyap. Built with Focus & Reliability.
-  </footer>
+<footer style="text-align:center; padding:2rem; border-top:1px solid var(--border);">
+  © 2026 Roshan Kashyap
+</footer>
 
 </body>
 </html>
