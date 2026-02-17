@@ -6,67 +6,219 @@
   <title>Roshan Kashyap | Full-Stack & Cloud Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0c10;
-      --card-bg: #11141b;
-      --border: rgba(255, 255, 255, 0.08);
+      --bg: #080a0f;
+      --card-bg: #0f1218;
+      --card-hover: #141820;
+      --border: rgba(255,255,255,0.07);
+      --border-lit: rgba(193,255,61,0.25);
       --accent: #c1ff3d;
-      --accent-soft: rgba(193, 255, 61, 0.1);
-      --text-main: #e2e8f0;
-      --text-muted: #94a3b8;
-      --nav-bg: rgba(10, 12, 16, 0.85);
+      --accent-dim: #9fd435;
+      --accent-soft: rgba(193,255,61,0.07);
+      --accent-glow: rgba(193,255,61,0.15);
+      --text-main: #dde4ee;
+      --text-muted: #6e7e94;
+      --text-sub: #3d4d5e;
+      --nav-bg: rgba(8,10,15,0.92);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);
+      color:var(--text-main);
+      font-family:'DM Sans',sans-serif;
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    body::after{
+      content:'';
+      position:fixed;inset:0;z-index:9999;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events:none;opacity:0.5;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { 
-      background-color: var(--bg); 
-      color: var(--text-main); 
-      font-family: 'Inter', sans-serif; 
-      line-height: 1.7; 
+    /* NAV */
+    header{
+      position:fixed;top:0;width:100%;z-index:1000;
+      background:var(--nav-bg);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
     }
-
-    header {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+    .nav-container{
+      max-width:1180px;margin:0 auto;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 2rem;
     }
+    .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--accent);letter-spacing:-0.5px}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+    nav a:hover{color:var(--accent)}
+    .hire-btn{padding:0.6rem 1.3rem;background:var(--accent);color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;text-decoration:none;border-radius:3px;transition:all 0.2s}
+    .hire-btn:hover{background:#d4ff5a;transform:translateY(-1px)}
 
-    .nav-container {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 2rem;
+    /* SECTION */
+    .section{padding:100px 2rem;max-width:1180px;margin:0 auto;position:relative;z-index:1}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem}
+    .sec-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:0.9rem}
+    .sec-sub{color:var(--text-muted);font-size:0.93rem;max-width:600px;margin-bottom:3.5rem;line-height:1.9}
+    .hr{height:1px;background:var(--border);margin:0 2rem}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative}
+    #hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:linear-gradient(rgba(193,255,61,0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(193,255,61,0.03) 1px, transparent 1px);
+      background-size:60px 60px;
+      mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+      pointer-events:none;
     }
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:var(--accent-soft);border:1px solid rgba(193,255,61,0.18);border-radius:20px;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.06em;margin-bottom:2rem}
+    .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.6)}}
+    .hero-h1{font-family:'Syne',sans-serif;font-size:clamp(3.2rem,8vw,6rem);font-weight:800;letter-spacing:-3px;line-height:0.95;margin-bottom:1.6rem}
+    .hero-h1 .hl{color:var(--accent)}
+    .hero-h1 .dim{color:rgba(255,255,255,0.18)}
+    .hero-tagline{max-width:520px;color:var(--text-muted);font-size:1rem;line-height:1.85;margin-bottom:2.5rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+    .btn-primary{padding:0.9rem 2rem;background:var(--accent);color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;text-decoration:none;border-radius:3px;display:inline-block;transition:all 0.2s}
+    .btn-primary:hover{background:#d4ff5a;transform:translateY(-2px)}
+    .btn-ghost{padding:0.9rem 2rem;background:transparent;color:var(--text-muted);border:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:600;font-size:0.88rem;text-decoration:none;border-radius:3px;display:inline-block;transition:all 0.2s}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+    .hero-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;width:fit-content}
+    .stat{padding:1.1rem 2rem;border-right:1px solid var(--border)}
+    .stat:last-child{border-right:none}
+    .stat-n{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1}
+    .stat-l{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-sub);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
 
-    .logo { font-weight: 800; font-size: 1.25rem; color: var(--accent); }
-    nav ul { display: flex; gap: 2rem; list-style: none; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
-    nav a:hover { color: var(--accent); }
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:5rem;align-items:start}
+    .about-p{color:var(--text-muted);font-size:0.95rem;line-height:1.95;margin-bottom:1.2rem}
+    .about-p strong{color:var(--text-main);font-weight:500}
+    .about-links{display:flex;gap:0.7rem;flex-wrap:wrap;margin-top:1.8rem}
+    .pill-link{display:inline-flex;align-items:center;gap:7px;padding:0.45rem 1rem;border:1px solid var(--border);border-radius:3px;color:var(--text-muted);text-decoration:none;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.04em;transition:all 0.2s}
+    .pill-link:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+    .info-box{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1.8rem}
+    .info-box-title{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-sub);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.2rem}
+    .irow{display:flex;justify-content:space-between;align-items:baseline;padding:0.65rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;gap:1rem}
+    .irow:last-child{border-bottom:none}
+    .ikey{color:var(--text-sub);font-family:'DM Mono',monospace;font-size:0.7rem;white-space:nowrap}
+    .ival{color:var(--text-main);text-align:right}
+    .ival.green{color:var(--accent)}
 
-    .section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
-    .badge { display: inline-block; padding: 4px 12px; background: var(--accent-soft); color: var(--accent); border-radius: 20px; font-size: 0.75rem; margin-bottom: 1rem; }
+    /* EXPERIENCE */
+    .timeline{display:flex;flex-direction:column;gap:0}
+    .titem{display:grid;grid-template-columns:180px 1px 1fr;gap:0 2.5rem;padding-bottom:3.5rem}
+    .titem:last-child{padding-bottom:0}
+    .tdate{text-align:right;padding-top:4px}
+    .tperiod{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text-sub);line-height:1.6}
+    .tco{font-size:0.8rem;color:var(--accent);font-weight:500;margin-top:5px;font-family:'DM Mono',monospace}
+    .tline{position:relative;background:var(--border)}
+    .tline::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:10px;height:10px;background:var(--accent);border-radius:50%;box-shadow:0 0 14px rgba(193,255,61,0.6)}
+    .tcontent{padding-top:0}
+    .trole{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:0.25rem}
+    .tloc{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text-sub);margin-bottom:1rem;letter-spacing:0.06em}
+    .impact-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.2rem}
+    .impact-list li{display:flex;gap:0.8rem;font-size:0.88rem;color:var(--text-muted);line-height:1.7}
+    .impact-list li::before{content:'▸';color:var(--accent);font-size:0.7rem;margin-top:4px;flex-shrink:0}
+    .impact-list li strong{color:var(--text-main);font-weight:500}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+    .tag{padding:3px 10px;background:var(--accent-soft);border:1px solid rgba(193,255,61,0.1);color:var(--accent-dim);border-radius:3px;font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.03em}
 
-    #hero { height: 100vh; display: flex; justify-content: center; flex-direction: column; }
-    .hero-content h1 { font-size: 4.5rem; margin-bottom: 1.5rem; }
-    .hero-content p { max-width: 600px; color: var(--text-muted); margin-bottom: 2rem; }
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .pcard{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,background 0.25s}
+    .pcard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% -10%, var(--accent-glow), transparent);opacity:0;transition:opacity 0.3s}
+    .pcard:hover{border-color:var(--border-lit);background:var(--card-hover)}
+    .pcard:hover::before{opacity:1}
+    .pcard-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-sub);letter-spacing:0.12em;margin-bottom:1rem}
+    .pcard-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:0.8rem;line-height:1.2}
+    .pcard-desc{color:var(--text-muted);font-size:0.86rem;line-height:1.8;margin-bottom:1.2rem}
+    .pcard-desc strong{color:var(--text-main);font-weight:500}
+    .pcard-impact{background:var(--accent-soft);border-left:2px solid var(--accent);padding:0.7rem 0.9rem;border-radius:0 3px 3px 0;margin-bottom:1.2rem}
+    .pcard-impact p{font-size:0.82rem;color:var(--text-main);line-height:1.6}
+    .pcard-impact span{color:var(--accent);font-weight:500}
+    .pub-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:rgba(255,190,50,0.07);border:1px solid rgba(255,190,50,0.2);border-radius:3px;font-family:'DM Mono',monospace;font-size:0.65rem;color:#ffc04d;letter-spacing:0.04em;margin-bottom:0.8rem}
 
-    .cta-btn {
-      padding: 1rem 2rem;
-      background: var(--accent);
-      color: #000;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 4px;
-      display: inline-block;
+    /* EDUCATION */
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .edu-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,background 0.25s}
+    .edu-card::after{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.35s ease}
+    .edu-card:hover{border-color:var(--border-lit);background:var(--card-hover)}
+    .edu-card:hover::after{height:100%}
+    .edu-deg{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.25rem}
+    .edu-school{color:var(--accent);font-family:'DM Mono',monospace;font-size:0.78rem;margin-bottom:0.8rem}
+    .edu-grade{display:inline-block;padding:3px 10px;background:var(--accent-soft);border:1px solid rgba(193,255,61,0.15);border-radius:3px;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent-dim);margin-bottom:0.9rem}
+    .edu-detail{color:var(--text-muted);font-size:0.84rem;line-height:1.75}
+    .edu-year{display:block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text-sub)}
+
+    /* SKILLS */
+    .skills-outer{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+    .sgroup{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.25s,background 0.25s}
+    .sgroup:hover{border-color:var(--border-lit);background:var(--card-hover)}
+    .sgroup-title{font-family:'Syne',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1rem}
+    .spills{display:flex;flex-wrap:wrap;gap:6px}
+    .spill{padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text-muted);transition:all 0.18s;cursor:default}
+    .spill:hover{border-color:rgba(193,255,61,0.3);color:var(--accent);background:var(--accent-soft)}
+
+    /* ACHIEVEMENTS */
+    .ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .ach-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1.8rem;transition:border-color 0.25s,background 0.25s}
+    .ach-card:hover{border-color:var(--border-lit);background:var(--card-hover)}
+    .ach-icon{font-size:1.6rem;margin-bottom:0.9rem}
+    .ach-title{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.5rem}
+    .ach-desc{color:var(--text-muted);font-size:0.83rem;line-height:1.75}
+    .ach-desc strong{color:var(--text-main);font-weight:500}
+    .ach-desc em{color:var(--text-main);font-style:italic}
+    .ach-desc a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(193,255,61,0.3);transition:border-color 0.2s}
+    .ach-desc a:hover{border-color:var(--accent)}
+
+    /* CONTACT */
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .contact-intro{color:var(--text-muted);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem}
+    .clinks{display:flex;flex-direction:column;gap:0.9rem;margin-top:1.5rem}
+    .clink{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;color:var(--text-main);text-decoration:none;font-size:0.86rem;transition:all 0.2s}
+    .clink:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+    .clink-ico{width:34px;height:34px;background:var(--accent-soft);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+    .clink-sub{font-size:0.73rem;color:var(--text-muted);font-family:'DM Mono',monospace;margin-top:1px}
+    .cform{display:flex;flex-direction:column;gap:0.9rem}
+    .flabel{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--text-sub);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.3rem}
+    .finput,.ftextarea{width:100%;background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:0.7rem 0.9rem;color:var(--text-main);font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s}
+    .finput:focus,.ftextarea:focus{border-color:rgba(193,255,61,0.35)}
+    .ftextarea{min-height:110px;resize:vertical}
+    .fsubmit{padding:0.8rem 2rem;background:var(--accent);color:#000;border:none;border-radius:3px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;align-self:flex-start}
+    .fsubmit:hover{background:#d4ff5a;transform:translateY(-1px)}
+
+    /* FOOTER */
+    .footer-inner{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding:2rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+    .footer-logo{font-family:'Syne',sans-serif;font-weight:800;color:var(--accent)}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--text-sub)}
+
+    /* RESPONSIVE */
+    @media(max-width:920px){
+      .about-grid{grid-template-columns:1fr;gap:2.5rem}
+      .edu-grid,.projects-grid{grid-template-columns:1fr}
+      .skills-outer{grid-template-columns:1fr}
+      .ach-grid{grid-template-columns:1fr 1fr}
+      .contact-wrap{grid-template-columns:1fr;gap:3rem}
+      .titem{grid-template-columns:120px 1px 1fr;gap:0 1.5rem}
+    }
+    @media(max-width:640px){
+      .section{padding:80px 1.2rem}
+      nav ul{display:none}
+      .ach-grid{grid-template-columns:1fr}
+      .hero-stats{flex-direction:column;width:100%}
+      .stat{border-right:none;border-bottom:1px solid var(--border)}
+      .stat:last-child{border-bottom:none}
+      .titem{grid-template-columns:80px 1px 1fr;gap:0 1rem}
+      .footer-inner{flex-direction:column;gap:1rem;text-align:center}
     }
   </style>
 </head>
-
 <body>
 
+<!-- NAV -->
 <header>
   <div class="nav-container">
     <div class="logo">RK.</div>
@@ -74,36 +226,455 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <a href="mailto:roshankashyap2002@gmail.com" class="cta-btn">Hire Me</a>
+    <a href="mailto:roshankashyap2002@gmail.com" class="hire-btn">Hire Me</a>
   </div>
 </header>
 
+<!-- HERO -->
 <section id="hero" class="section">
-  <div class="hero-content">
-    <div class="badge">Open to Full-Time Roles | London, UK</div>
-    <h1>Roshan Kashyap<br>Full-Stack & Cloud Engineer</h1>
-    <p>I engineer production-ready systems, combining industry experience with an MSc in Computer Science.</p>
-    <div style="margin-top: 2rem;">
-      <a href="#experience" class="cta-btn">View Experience</a>
-
-      <!-- ✅ UPDATED RESUME LINK -->
-     <a href="/Roshan_CV.pdf" target="_blank"
-   class="cta-btn"
-   style="margin-left: 1rem;">
-  View Resume
-</a>
-
+  <div>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Open to Full-Time Roles &nbsp;·&nbsp; London, UK
+    </div>
+    <h1 class="hero-h1">
+      Roshan<br>
+      <span class="hl">Kashyap</span><br>
+      <span class="dim">Engineer.</span>
+    </h1>
+    <p class="hero-tagline">
+      Full-Stack & Cloud Engineer completing an MSc at Queen Mary University of London.
+      I build production-grade systems — cloud architectures, AI platforms, and scalable software that actually works under real-world constraints.
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View My Work</a>
+      <a href="/Roshan_CV.pdf" target="_blank" class="btn-ghost">Download CV</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n">2+</div>
+        <div class="stat-l">Years Industry</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">MSc</div>
+        <div class="stat-l">Queen Mary UoL</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">4+</div>
+        <div class="stat-l">Projects Shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">1</div>
+        <div class="stat-l">Publication</div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer style="text-align:center; padding:2rem; border-top:1px solid var(--border);">
-  © 2026 Roshan Kashyap
+<div class="hr"></div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="eyebrow">001 — Who I Am</div>
+  <div class="sec-title">About Me</div>
+  <div class="about-grid">
+    <div>
+      <p class="about-p">
+        I'm a <strong>Full-Stack & Cloud Engineer</strong> based in London, currently finishing my MSc in Computer Science at <strong>Queen Mary University of London</strong> — where I'm also a Graduate Teaching Demonstrator, helping postgraduate students navigate algorithms, data processing, and cloud computing in weekly lab sessions.
+      </p>
+      <p class="about-p">
+        My industry experience spans both sides of the stack. At <strong>Wiseen Infotech</strong>, I designed and deployed a <strong>highly available three-tier AWS architecture</strong> from scratch — combining Elastic Load Balancer, EC2 autoscaling, and Amazon Aurora — architected for zero downtime and fault tolerance under production traffic. I've also built a full <strong>microservices-based AI learning platform</strong> with personalised recommendation systems, real-time analytics, and strict GDPR/FERPA compliance built in from day one.
+      </p>
+      <p class="about-p">
+        I care about <strong>systems that don't break at 3am</strong> — clean architecture, observable infrastructure, well-designed APIs, and code that the next engineer can actually understand and maintain. I've also co-authored <strong>peer-reviewed research</strong> published in IRJMETS on deep learning for medical handwriting recognition.
+      </p>
+      <p class="about-p">
+        Beyond engineering: I won first place at a national Ideathon for a smart healthcare IoT device, volunteered with Youth for Seva on science education outreach, and speak publicly about technology and social impact.
+      </p>
+      <div class="about-links">
+        <a href="https://github.com/" target="_blank" class="pill-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:roshankashyap2002@gmail.com" class="pill-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Email
+        </a>
+        <a href="tel:+4407428709936" class="pill-link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.62 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +44 07428 709936
+        </a>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Quick Info</div>
+      <div class="irow"><span class="ikey">Location</span><span class="ival">London, UK</span></div>
+      <div class="irow"><span class="ikey">Status</span><span class="ival green">Open to Work</span></div>
+      <div class="irow"><span class="ikey">Current Role</span><span class="ival">Teaching Demonstrator</span></div>
+      <div class="irow"><span class="ikey">MSc Grade</span><span class="ival">Merit</span></div>
+      <div class="irow"><span class="ikey">BSc Grade</span><span class="ival">Distinction</span></div>
+      <div class="irow"><span class="ikey">Remote</span><span class="ival">Yes — Hybrid preferred</span></div>
+      <div class="irow"><span class="ikey">Email</span><span class="ival" style="font-size:0.75rem">roshankashyap2002@gmail.com</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="eyebrow">002 — Career</div>
+  <div class="sec-title">Experience</div>
+  <p class="sec-sub">Real roles, real systems, real impact — what I built, how I built it, and why it mattered.</p>
+
+  <div class="timeline">
+
+    <!-- QMUL -->
+    <div class="titem">
+      <div class="tdate">
+        <div class="tperiod">Sep 2024<br>— Present</div>
+        <div class="tco">QMUL, London</div>
+      </div>
+      <div class="tline"></div>
+      <div class="tcontent">
+        <div class="trole">Graduate Teaching Demonstrator</div>
+        <div class="tloc">Queen Mary University of London · Full-time · London, UK</div>
+        <ul class="impact-list">
+          <li><div><strong>Advanced Technical Instruction:</strong> Delivered weekly hands-on lab support for postgraduate modules in <strong>Algorithms & Data Structures, Machine Learning, and Cloud Computing</strong> — directly shaping how the next cohort of MSc engineers understand distributed systems, algorithmic complexity, and cloud orchestration.</div></li>
+          <li><div><strong>Data & Systems Enablement:</strong> Designed, validated, and optimised <strong>production-grade datasets</strong> for analytical and systems-focused assignments — ensuring every dataset met real-world quality standards for accuracy, scalability, and applicability, not just textbook toy examples.</div></li>
+          <li><div><strong>Cross-Stakeholder Communication:</strong> Acted as the <strong>technical bridge between academic staff and students</strong> — translating abstract concepts like distributed consensus, cloud autoscaling, and time complexity into clear, actionable explanations that measurably improved class engagement and comprehension across technical and non-technical audiences.</div></li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Algorithms & DS</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Cloud Computing</span>
+          <span class="tag">Data Engineering</span>
+          <span class="tag">Technical Instruction</span>
+          <span class="tag">Curriculum Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wiseen -->
+    <div class="titem">
+      <div class="tdate">
+        <div class="tperiod">Jun 2024<br>— Jul 2024</div>
+        <div class="tco">Wiseen, Bangalore</div>
+      </div>
+      <div class="tline"></div>
+      <div class="tcontent">
+        <div class="trole">Cloud Computing Engineer</div>
+        <div class="tloc">Wiseen Infotech · Bangalore, India</div>
+        <ul class="impact-list">
+          <li><div><strong>Cloud Architecture & Scalability:</strong> Designed and implemented a <strong>highly available three-tier AWS architecture</strong> from scratch — combining <strong>Elastic Load Balancer, EC2 auto-scaling groups, and Amazon Aurora</strong> — engineered specifically for fault tolerance, zero single points of failure, and optimised database throughput under production load.</div></li>
+          <li><div><strong>Production-Grade Deployment:</strong> Deployed and integrated a <strong>full-stack React.js frontend + Node.js backend application</strong> into this architecture with autoscaling policies, health-check monitoring, and load-balanced routing — transforming a prototype into an enterprise-ready cloud product capable of absorbing traffic spikes without manual intervention.</div></li>
+          <li><div><strong>Resilience Under Load:</strong> The autoscaling and health-monitoring configuration <strong>eliminated downtime events during load testing</strong> — hitting the resilience benchmarks required for production sign-off and demonstrating fault tolerance under simulated failure scenarios.</div></li>
+        </ul>
+        <div class="tags">
+          <span class="tag">AWS</span>
+          <span class="tag">EC2</span>
+          <span class="tag">Elastic Load Balancer</span>
+          <span class="tag">Amazon Aurora</span>
+          <span class="tag">React.js</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Autoscaling</span>
+          <span class="tag">Fault Tolerance</span>
+          <span class="tag">Load Balancing</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="eyebrow">003 — Built Things</div>
+  <div class="sec-title">Projects</div>
+  <p class="sec-sub">Systems I engineered end-to-end — built for real users, real data, real constraints, and real impact.</p>
+
+  <div class="projects-grid">
+
+    <div class="pcard">
+      <div class="pcard-num">PROJECT 01</div>
+      <div class="pcard-title">AI-Powered Intelligent<br>Learning Platform</div>
+      <p class="pcard-desc">
+        Designed and built a <strong>full-stack, microservices-based AI learning platform</strong> using <strong>React 18, TypeScript, PostgreSQL, and REST APIs</strong> — delivering scalable, low-latency, and personalised learning through a <strong>hybrid recommendation system</strong> (content-based + collaborative filtering) and adaptive learning paths driven by real-time user behaviour and engagement analytics.
+      </p>
+      <div class="pcard-impact">
+        <p>
+          <span>What this meant:</span> Not pre-built AI wrappers — a <span>custom-engineered recommendation engine</span> designed from scratch for meaningful personalisation. The hybrid approach outperformed single-method filtering in relevance testing. Engineered a secure, production-ready backend with <span>Drizzle ORM, TanStack Query, and role-based access control (RBAC)</span>, implementing real-time analytics, performance optimisation, encrypted data handling, and strict <span>GDPR/FERPA compliance</span> to ensure reliability, privacy, and ethical AI deployment in regulated educational environments.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag">React 18</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Drizzle ORM</span>
+        <span class="tag">TanStack Query</span>
+        <span class="tag">RBAC</span>
+        <span class="tag">GDPR/FERPA</span>
+        <span class="tag">Microservices</span>
+        <span class="tag">Recommendation Systems</span>
+        <span class="tag">Real-time Analytics</span>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pub-badge">📄 Peer-Reviewed · IRJMETS Journal</div>
+      <div class="pcard-num">PROJECT 02</div>
+      <div class="pcard-title">Doctor's Prescription<br>Recognition System</div>
+      <p class="pcard-desc">
+        Developed a <strong>deep learning–based handwriting recognition system</strong> using <strong>Tesseract OCR (CNN) and LSTM models</strong> to accurately digitise handwritten medical prescriptions — directly attacking one of healthcare's most persistent operational problems: dangerous misreadings of handwritten drug instructions that lead to medication errors and patient safety incidents.
+      </p>
+      <div class="pcard-impact">
+        <p>
+          <span>Real-world impact:</span> Prescription misreadings are a documented root cause of serious medication safety incidents globally. This system <span>reduces human interpretation errors</span> at the exact point where they cause the most harm. Built a <span>Flask-based pharmacy management application</span> integrated with <span>MySQL and Telegram APIs</span> — enabling prescription uploads, patient data synchronisation, and <span>real-time reporting to pharmacists</span>, streamlining pharmacy workflows and cutting the manual verification loop to near-zero.
+        </p>
+      </div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Tesseract OCR</span>
+        <span class="tag">CNN</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">Flask</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Telegram API</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">Healthcare AI</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="eyebrow">004 — Academia</div>
+  <div class="sec-title">Education</div>
+  <p class="sec-sub">The formal training that built the foundation for everything else.</p>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-deg">MSc in Computer Science</div>
+      <div class="edu-school">Queen Mary University of London</div>
+      <div class="edu-grade">Merit</div>
+      <p class="edu-detail">Postgraduate study with coursework in <strong>Algorithms & Data Structures, Machine Learning, and Cloud Computing</strong>. Concurrently working as a Graduate Teaching Demonstrator — applying advanced theoretical concepts in real instructional settings while completing the degree.</p>
+      <span class="edu-year">Sep 2024 — Sep 2025 · London, UK</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-deg">BSc in Computer Science</div>
+      <div class="edu-school">Jyothy Institute of Technology</div>
+      <div class="edu-grade">Distinction</div>
+      <p class="edu-detail">Undergraduate study covering <strong>Algorithms & Data Structures, Machine Learning, and Cloud Computing</strong>. Co-authored and published peer-reviewed research on deep learning for medical handwriting recognition during undergraduate study. Graduated with <strong>Distinction</strong> — consistent top-tier academic performance throughout the programme.</p>
+      <span class="edu-year">May 2020 — May 2024 · Bangalore, India</span>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="eyebrow">005 — Toolkit</div>
+  <div class="sec-title">Skills</div>
+  <p class="sec-sub">Every technology listed here is something I've actually used to ship working software — not just "familiar with".</p>
+
+  <div class="skills-outer">
+    
+    <div class="sgroup">
+      <div class="sgroup-title">Languages</div>
+      <div class="spills">
+        <span class="spill">Python</span>
+        <span class="spill">PHP</span>
+        <span class="spill">C++</span>
+        <span class="spill">JavaScript</span>
+        <span class="spill">Java</span>
+        <span class="spill">SQL</span>
+        <span class="spill">Bash</span>
+      </div>
+    </div>
+
+    <div class="sgroup">
+      <div class="sgroup-title">Frameworks & Libraries</div>
+      <div class="spills">
+        <span class="spill">Scikit-learn</span>
+        <span class="spill">NLTK</span>
+        <span class="spill">SpaCy</span>
+        <span class="spill">TensorFlow</span>
+        <span class="spill">Keras</span>
+        <span class="spill">Django</span>
+        <span class="spill">Flask</span>
+        <span class="spill">Node.js</span>
+        <span class="spill">React 18</span>
+        <span class="spill">TypeScript</span>
+        <span class="spill">LAMP</span>
+      </div>
+    </div>
+
+    <div class="sgroup">
+      <div class="sgroup-title">Tools & DevOps</div>
+      <div class="spills">
+        <span class="spill">Git</span>
+        <span class="spill">Docker</span>
+        <span class="spill">Kubernetes</span>
+        <span class="spill">PostgreSQL</span>
+        <span class="spill">MySQL</span>
+        <span class="spill">SQLite</span>
+        <span class="spill">Drizzle ORM</span>
+        <span class="spill">TanStack Query</span>
+      </div>
+    </div>
+
+    <div class="sgroup">
+      <div class="sgroup-title">Cloud Platforms</div>
+      <div class="spills">
+        <span class="spill">AWS</span>
+        <span class="spill">EC2</span>
+        <span class="spill">Elastic Load Balancer</span>
+        <span class="spill">Amazon Aurora</span>
+        <span class="spill">Google Cloud Platform (GCP)</span>
+      </div>
+    </div>
+
+    <div class="sgroup">
+      <div class="sgroup-title">Operating Systems & Hardware</div>
+      <div class="spills">
+        <span class="spill">Linux</span>
+        <span class="spill">Windows</span>
+        <span class="spill">Web</span>
+        <span class="spill">Arduino</span>
+        <span class="spill">Raspberry Pi</span>
+      </div>
+    </div>
+
+    <div class="sgroup">
+      <div class="sgroup-title">Soft Skills</div>
+      <div class="spills">
+        <span class="spill">Leadership</span>
+        <span class="spill">Event Management</span>
+        <span class="spill">Writing</span>
+        <span class="spill">Public Speaking</span>
+        <span class="spill">Time Management</span>
+        <span class="spill">Technical Communication</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
+  <div class="eyebrow">006 — Recognition</div>
+  <div class="sec-title">Achievements & Publications</div>
+  <p class="sec-sub">Beyond the day-to-day — recognition, published research, and community impact.</p>
+
+  <div class="ach-grid">
+    
+    <div class="ach-card">
+      <div class="ach-icon">🏆</div>
+      <div class="ach-title">1st Place — College Ideathon</div>
+      <p class="ach-desc">Secured <strong>First Place at the College Ideathon</strong> by conceptualising a <strong>smart COVID patient monitoring wristband</strong> — a real-time IoT device designed to track body temperature continuously and automatically alert nursing staff during medical emergencies. Recognised for both the technical innovation and its tangible healthcare impact during the pandemic.</p>
+    </div>
+
+    <div class="ach-card">
+      <div class="ach-icon">📄</div>
+      <div class="ach-title">Peer-Reviewed Publication</div>
+      <p class="ach-desc">Co-authored the peer-reviewed research publication <em>"Doctor's Prescription Recognition Learning: A Survey"</em> published in the <strong>International Research Journal of Modernization in Engineering, Technology and Science (IRJMETS)</strong> — presenting a comprehensive analysis of deep learning, CNN, OCR, and hybrid models for medical handwriting recognition. <a href="https://www.irjmets.com/uploadedfiles/paper/issue_5_may_2023/40299/final/fin_irjmets1716533727.pdf" target="_blank">Read the publication →</a></p>
+    </div>
+
+    <div class="ach-card">
+      <div class="ach-icon">🌍</div>
+      <div class="ach-title">Community Outreach — Youth for Seva</div>
+      <p class="ach-desc">Contributed as a volunteer with <strong>Youth for Seva</strong> under the <strong>Chote Scientist</strong> social awareness initiative — supporting community outreach and educational programmes aimed at fostering scientific curiosity and social responsibility among students from underserved backgrounds. Because engineering skills are most valuable when shared.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="eyebrow">007 — Let's Talk</div>
+  <div class="sec-title">Get In Touch</div>
+  <div class="contact-wrap">
+    <div>
+      <p class="contact-intro">
+        I'm actively looking for full-time software engineering or cloud roles in London, or strong remote-friendly positions. If you're building something meaningful and need someone who can own both the product and the infrastructure — let's have a conversation.
+      </p>
+      <p class="contact-intro">Usually respond within 24 hours.</p>
+      <div class="clinks">
+        <a href="mailto:roshankashyap2002@gmail.com" class="clink">
+          <div class="clink-ico">✉</div>
+          <div>
+            <div style="font-weight:500">Email</div>
+            <div class="clink-sub">roshankashyap2002@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+4407428709936" class="clink">
+          <div class="clink-ico">📞</div>
+          <div>
+            <div style="font-weight:500">Phone / WhatsApp</div>
+            <div class="clink-sub">+44 07428 709 936</div>
+          </div>
+        </a>
+        <a href="https://github.com/" target="_blank" class="clink">
+          <div class="clink-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:500">GitHub</div>
+            <div class="clink-sub">github.com/</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="cform">
+      <div>
+        <label class="flabel">Your Name</label>
+        <input type="text" class="finput" placeholder="Jane Smith">
+      </div>
+      <div>
+        <label class="flabel">Email Address</label>
+        <input type="email" class="finput" placeholder="jane@company.com">
+      </div>
+      <div>
+        <label class="flabel">Subject</label>
+        <input type="text" class="finput" placeholder="Cloud Engineer role at Acme Ltd">
+      </div>
+      <div>
+        <label class="flabel">Message</label>
+        <textarea class="ftextarea" placeholder="Hi Roshan, we'd love to chat about..."></textarea>
+      </div>
+      <button type="button" class="fsubmit"
+        onclick="this.textContent='Sent! ✓';this.style.background='#9fd435';setTimeout(()=>{this.textContent='Send Message →';this.style.background=''},3000)">
+        Send Message →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">RK.</div>
+    <div class="footer-copy">© 2026 Roshan Kashyap · London, UK</div>
+  </div>
 </footer>
 
 </body>
